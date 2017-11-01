@@ -4,6 +4,10 @@ sitemap:
   exclude: 'yes'
 ---
 
+particlesJS.load('particles-js', 'js/particles.json', function() {
+  console.log('particles.js loaded - callback');
+});
+
 $(document).ready(function () {
   $('a.blog-button').click(function (e) {
     if ($('.panel-cover').hasClass('panel-cover--collapsed')) return
