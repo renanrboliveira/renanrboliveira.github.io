@@ -64,9 +64,13 @@ pre.highlight code,
   z-index: 1;
 }
 
+
+
 #particles-js, #particles-js > canvas {
   width: 100%;
   height: 100%;
   position: absolute;
   z-index: 2 !important;
+  background: url(../images/cover.jpg) top left no-repeat #666666;
+	background-size: cover;
 }
