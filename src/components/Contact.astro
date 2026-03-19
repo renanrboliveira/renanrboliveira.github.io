@@ -1,0 +1,33 @@
+---
+const links = [
+  { label: 'GitHub', href: 'https://github.com/renanrboliveira' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/renanrboliveira' },
+  { label: 'Email', href: 'mailto:renanrboliveira@gmail.com' },
+];
+---
+
+<section id="contact" class="py-24 sm:py-32">
+  <div class="max-w-5xl mx-auto px-6">
+    <span class="section-heading block">Contact</span>
+
+    <div class="max-w-2xl">
+      <p class="text-gray-300 text-lg mb-8">
+        Interested in discussing architecture, distributed systems, or engineering leadership?
+        Let's connect.
+      </p>
+
+      <div class="flex flex-wrap gap-6">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            class="link-underline text-sm"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

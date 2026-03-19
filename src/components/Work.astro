@@ -1,0 +1,73 @@
+---
+const projects = [
+  {
+    title: 'Data Protection Platform',
+    context: 'Nubank',
+    description:
+      'Designed and built LGPD compliance systems handling data protection for millions of customers. Ensured regulatory requirements were met while maintaining system performance at scale.',
+    challenges: ['Scale across millions of records', 'Data classification pipelines', 'Regulatory compliance (LGPD)'],
+    stack: ['Clojure', 'Datomic', 'Kafka', 'AWS'],
+  },
+  {
+    title: 'Investment Platform Architecture',
+    context: 'Nubank',
+    description:
+      'Architected services for variable income and investment products. Built systems where financial correctness and real-time data processing are critical requirements.',
+    challenges: ['Real-time market data processing', 'Financial calculation correctness', 'Distributed transaction guarantees'],
+    stack: ['Clojure', 'Datomic', 'Kafka', 'AWS'],
+  },
+  {
+    title: 'Education Platform',
+    context: 'Fractal Tecnologia',
+    description:
+      'Led a team building LMS, E-learning, and CRM applications. Responsible for technical leadership, architecture decisions, and DevOps infrastructure.',
+    challenges: ['Multi-tenant architecture', 'Scalable content delivery', 'Team technical leadership'],
+    stack: ['React', 'Ruby on Rails', 'PostgreSQL', 'AWS'],
+  },
+];
+---
+
+<section id="work" class="py-24 sm:py-32">
+  <div class="max-w-5xl mx-auto px-6">
+    <span class="section-heading block">Selected Work</span>
+
+    <div class="space-y-6">
+      {projects.map((project) => (
+        <div class="card">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+            <h3 class="text-white font-medium">{project.title}</h3>
+            <span class="text-xs font-mono text-accent shrink-0">{project.context}</span>
+          </div>
+
+          <p class="text-gray-300 text-sm leading-relaxed mb-4">
+            {project.description}
+          </p>
+
+          <div class="mb-4">
+            <span class="text-xs text-muted uppercase tracking-wider">Key Challenges</span>
+            <ul class="mt-2 space-y-1">
+              {project.challenges.map((challenge) => (
+                <li class="text-sm text-muted flex items-start gap-2">
+                  <span class="text-accent mt-1.5 shrink-0">
+                    <svg width="6" height="6" viewBox="0 0 6 6">
+                      <rect width="6" height="6" rx="1" fill="currentColor" />
+                    </svg>
+                  </span>
+                  {challenge}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {project.stack.map((tech) => (
+              <span class="text-xs font-mono px-2 py-1 rounded bg-accent/10 text-accent/80">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,76 @@
+---
+const navItems = [
+  { label: 'About', href: '#about' },
+  { label: 'Expertise', href: '#expertise' },
+  { label: 'Work', href: '#work' },
+  { label: 'Philosophy', href: '#philosophy' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-border bg-surface/80 backdrop-blur-md">
+  <nav class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="font-semibold text-white tracking-tight text-sm">
+      Renan Oliveira
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-8">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="text-sm text-muted hover:text-white transition-colors duration-200"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile menu button -->
+    <button
+      id="menu-toggle"
+      class="md:hidden text-muted hover:text-white transition-colors"
+      aria-label="Toggle menu"
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="6" x2="17" y2="6" />
+        <line x1="3" y1="10" x2="17" y2="10" />
+        <line x1="3" y1="14" x2="17" y2="14" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-surface/95 backdrop-blur-md">
+    <ul class="px-6 py-4 space-y-3">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="block text-sm text-muted hover:text-white transition-colors duration-200"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+    });
+  });
+</script>

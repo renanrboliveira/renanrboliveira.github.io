@@ -1,0 +1,67 @@
+---
+const areas = [
+  {
+    title: 'Software Architecture',
+    description:
+      'Designing systems that evolve gracefully. Clear boundaries, well-defined interfaces, and architectures that make the right thing easy and the wrong thing hard.',
+    icon: `<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/>`,
+  },
+  {
+    title: 'Distributed Systems',
+    description:
+      'Building services that handle failures, maintain consistency, and scale independently. Event-driven architectures and eventually consistent systems in financial contexts.',
+    icon: `<circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="7" y1="19" x2="17" y2="19"/>`,
+  },
+  {
+    title: 'Backend Engineering',
+    description:
+      'Deep experience with Clojure, Java, Ruby, and Node.js. Functional programming principles — immutability, pure functions, and data-oriented design — as tools for correct software.',
+    icon: `<polyline points="4,17 10,11 4,5"/><line x1="12" y1="19" x2="20" y2="19"/>`,
+  },
+  {
+    title: 'Fintech & Investment Systems',
+    description:
+      'Engineering products where correctness is non-negotiable. Regulatory compliance, data protection, and platforms handling real money at scale.',
+    icon: `<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>`,
+  },
+  {
+    title: 'Platform & Infrastructure',
+    description:
+      'AWS, Terraform, containerized deployments, CI/CD pipelines. Infrastructure as code and developer experience as a product.',
+    icon: `<rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/>`,
+  },
+  {
+    title: 'Frontend Engineering',
+    description:
+      'React, component architecture, design systems, and CSS-in-JS. Interfaces that are accessible, performant, and maintainable.',
+    icon: `<polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22,8.5 12,15.5 2,8.5"/>`,
+  },
+];
+---
+
+<section id="expertise" class="py-24 sm:py-32">
+  <div class="max-w-5xl mx-auto px-6">
+    <span class="section-heading block">Expertise</span>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {areas.map((area) => (
+        <div class="card group">
+          <div class="mb-4 text-accent">
+            <svg
+              class="w-6 h-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              set:html={area.icon}
+            />
+          </div>
+          <h3 class="text-white font-medium mb-2 text-sm">{area.title}</h3>
+          <p class="text-muted text-sm leading-relaxed">{area.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
