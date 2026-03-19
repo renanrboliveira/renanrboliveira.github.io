@@ -11,10 +11,15 @@ const expertise = [
   { title: 'Frontend', desc: 'React, design systems, accessibility.' },
 ];
 
-const work = [
-  { title: 'Data Protection Platform', ctx: 'Nubank', stack: ['Clojure', 'Datomic', 'Kafka'] },
-  { title: 'Investment Platform', ctx: 'Nubank', stack: ['Clojure', 'Datomic', 'AWS'] },
-  { title: 'Education Platform', ctx: 'Fractal', stack: ['React', 'Rails', 'PostgreSQL'] },
+const experience = [
+  { role: 'Lead Software Engineer', company: 'Nubank', period: '2019 — Present', stack: ['Clojure', 'Datomic', 'Kafka', 'AWS'] },
+  { role: 'Tech Lead & DevOps', company: 'Fractal Tecnologia', period: '2016 — 2019', stack: ['React', 'Rails', 'PostgreSQL', 'AWS'] },
+  { role: 'Full-stack Developer', company: 'Kamaleon TI', period: '2012 — 2016', stack: ['Java', 'Spring', 'PostgreSQL', 'EJB'] },
+];
+
+const education = [
+  { degree: 'Systems for Internet', school: 'FATEC-PB', period: '2015 — 2016' },
+  { degree: 'Computer Science', school: 'UFPB', period: '2010 — 2013' },
 ];
 
 const principles = [
@@ -94,27 +99,43 @@ const social = [
         </div>
       </section>
 
-      <!-- Work -->
-      <section>
-        <span class="section-heading block">Selected Work</span>
-        <div class="grid grid-cols-3 gap-3">
-          {work.map((project) => (
-            <div class="card !p-4 flex flex-col justify-between">
-              <div>
-                <div class="flex items-start justify-between gap-2 mb-2">
-                  <h3 class="text-white text-sm font-medium">{project.title}</h3>
-                  <span class="text-[10px] font-mono text-accent shrink-0">{project.ctx}</span>
+      <!-- Experience & Education -->
+      <section class="grid grid-cols-3 gap-3">
+        <div class="col-span-2">
+          <span class="section-heading block">Experience</span>
+          <div class="space-y-3">
+            {experience.map((job) => (
+              <div class="card !p-4">
+                <div class="flex items-start justify-between gap-2 mb-1">
+                  <div>
+                    <h3 class="text-white text-sm font-medium">{job.role}</h3>
+                    <span class="text-xs text-muted">{job.company}</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-accent shrink-0">{job.period}</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  {job.stack.map((tech) => (
+                    <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-accent/10 text-accent/80">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div class="flex flex-wrap gap-1.5 mt-2">
-                {project.stack.map((tech) => (
-                  <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-accent/10 text-accent/80">
-                    {tech}
-                  </span>
-                ))}
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <span class="section-heading block">Education</span>
+          <div class="space-y-3">
+            {education.map((ed) => (
+              <div class="card !p-4">
+                <h3 class="text-white text-sm font-medium mb-1">{ed.degree}</h3>
+                <span class="text-xs text-muted">{ed.school}</span>
+                <span class="block text-[10px] font-mono text-accent mt-1">{ed.period}</span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
