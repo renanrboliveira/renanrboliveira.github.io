@@ -1,35 +1,10 @@
 ---
 const principles = [
-  {
-    number: '01',
-    title: 'Simplicity is a feature',
-    description:
-      'The best systems are the ones you can hold in your head. Complexity should be earned, not inherited.',
-  },
-  {
-    number: '02',
-    title: 'Functional thinking',
-    description:
-      'Immutability and pure functions aren\'t just language features — they\'re architectural principles that lead to more predictable systems.',
-  },
-  {
-    number: '03',
-    title: 'Correctness first, then speed',
-    description:
-      'In financial systems, a fast wrong answer is worse than a slow right one. Build confidence in correctness, then optimize.',
-  },
-  {
-    number: '04',
-    title: 'Architecture is communication',
-    description:
-      'Good architecture makes the system legible to the team, not just the compiler. Code is read far more than it is written.',
-  },
-  {
-    number: '05',
-    title: 'Leadership is multiplying',
-    description:
-      'A tech lead\'s job is to make the team better, not to write the most code. Unblock, mentor, and create clarity.',
-  },
+  { number: '01', title: 'Simplicity is a feature', description: 'Complexity should be earned, not inherited.' },
+  { number: '02', title: 'Functional thinking', description: 'Immutability and pure functions as architectural principles.' },
+  { number: '03', title: 'Correctness first', description: 'A fast wrong answer is worse than a slow right one.' },
+  { number: '04', title: 'Architecture is communication', description: 'Make the system legible to the team, not just the compiler.' },
+  { number: '05', title: 'Leadership is multiplying', description: 'Make the team better, not just the codebase.' },
 ];
 ---
 
@@ -37,15 +12,13 @@ const principles = [
   <div class="max-w-5xl mx-auto px-6">
     <span class="section-heading block">Engineering Philosophy</span>
 
-    <div class="max-w-2xl space-y-8">
-      {principles.map((principle) => (
-        <div class="flex gap-6 group">
-          <span class="text-sm font-mono text-accent/40 pt-0.5 shrink-0">
-            {principle.number}
-          </span>
+    <div class="max-w-2xl space-y-6">
+      {principles.map((p) => (
+        <div class="flex gap-6">
+          <span class="text-sm font-mono text-accent/40 pt-0.5 shrink-0">{p.number}</span>
           <div>
-            <h3 class="text-white font-medium mb-1">{principle.title}</h3>
-            <p class="text-muted text-sm leading-relaxed">{principle.description}</p>
+            <h3 class="text-white font-medium mb-1">{p.title}</h3>
+            <p class="text-muted text-sm">{p.description}</p>
           </div>
         </div>
       ))}

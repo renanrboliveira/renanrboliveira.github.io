@@ -1,25 +1,135 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Expertise from '../components/Expertise.astro';
-import Work from '../components/Work.astro';
-import Philosophy from '../components/Philosophy.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+const expertise = [
+  { title: 'Software Architecture', desc: 'Systems with clear boundaries and interfaces.' },
+  { title: 'Distributed Systems', desc: 'Event-driven, consistency, fault tolerance.' },
+  { title: 'Backend Engineering', desc: 'Clojure, Java, Ruby, Node.js.' },
+  { title: 'Fintech', desc: 'Correctness, compliance, real money at scale.' },
+  { title: 'Platform & Infra', desc: 'AWS, Terraform, containers, CI/CD.' },
+  { title: 'Frontend', desc: 'React, design systems, accessibility.' },
+];
+
+const work = [
+  { title: 'Data Protection Platform', ctx: 'Nubank', stack: ['Clojure', 'Datomic', 'Kafka'] },
+  { title: 'Investment Platform', ctx: 'Nubank', stack: ['Clojure', 'Datomic', 'AWS'] },
+  { title: 'Education Platform', ctx: 'Fractal', stack: ['React', 'Rails', 'PostgreSQL'] },
+];
+
+const principles = [
+  'Simplicity is a feature.',
+  'Functional thinking as architecture.',
+  'Correctness first, then speed.',
+  'Architecture is communication.',
+  'Leadership is multiplying.',
+];
+
+const social = [
+  {
+    label: 'GitHub',
+    href: 'https://github.com/renanrboliveira',
+    icon: `<path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>`,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/renanrboliveira',
+    icon: `<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>`,
+  },
+  {
+    label: 'Email',
+    href: 'mailto:renanrboliveira@gmail.com',
+    icon: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>`,
+  },
+];
 ---
 
 <Layout>
-  <Header />
-  <main>
-    <Hero />
-    <About />
-    <Expertise />
-    <Work />
-    <Philosophy />
-    <Contact />
-  </main>
-  <Footer />
+  <div class="h-screen w-screen overflow-hidden flex">
+    <!-- Sidebar -->
+    <aside class="w-80 shrink-0 border-r border-border p-8">
+      <img
+        src="/profile.jpg"
+        alt="Renan Oliveira"
+        width="160"
+        height="192"
+        class="w-28 h-32 rounded-2xl object-cover ring-1 ring-border grayscale hover:grayscale-0 transition-all duration-500 mb-6"
+      />
+
+      <h1 class="text-xl font-bold text-white tracking-tight mb-1">Renan Oliveira</h1>
+      <p class="text-sm font-mono text-accent mb-4">Lead Software Engineer</p>
+      <p class="text-sm text-muted leading-relaxed mb-6">
+        Building resilient financial systems at <strong class="text-gray-300">Nubank</strong>.
+        From Java monoliths to Clojure microservices.
+      </p>
+
+      <div class="flex gap-3">
+        {social.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted hover:text-white hover:border-accent/50 hover:bg-accent/10 transition-all duration-200"
+            aria-label={link.label}
+            title={link.label}
+          >
+            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" set:html={link.icon} />
+          </a>
+        ))}
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-8 overflow-hidden grid grid-rows-[auto_1fr_auto] gap-6 h-screen">
+      <!-- Expertise -->
+      <section>
+        <span class="section-heading block">Expertise</span>
+        <div class="grid grid-cols-3 gap-3">
+          {expertise.map((item) => (
+            <div class="card !p-4">
+              <h3 class="text-white text-sm font-medium mb-1">{item.title}</h3>
+              <p class="text-muted text-xs leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Work -->
+      <section>
+        <span class="section-heading block">Selected Work</span>
+        <div class="grid grid-cols-3 gap-3">
+          {work.map((project) => (
+            <div class="card !p-4 flex flex-col justify-between">
+              <div>
+                <div class="flex items-start justify-between gap-2 mb-2">
+                  <h3 class="text-white text-sm font-medium">{project.title}</h3>
+                  <span class="text-[10px] font-mono text-accent shrink-0">{project.ctx}</span>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                {project.stack.map((tech) => (
+                  <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-accent/10 text-accent/80">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Philosophy -->
+      <section>
+        <span class="section-heading block">Philosophy</span>
+        <div class="flex flex-wrap gap-x-6 gap-y-1">
+          {principles.map((p, i) => (
+            <span class="text-sm text-muted">
+              <span class="font-mono text-accent/40 text-xs mr-2">0{i + 1}</span>
+              {p}
+            </span>
+          ))}
+        </div>
+      </section>
+    </main>
+  </div>
 </Layout>
